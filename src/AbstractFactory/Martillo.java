@@ -14,7 +14,7 @@ public class Martillo extends ArmaAbstracta {
     @Override
     public String mostrar() {
         
-        return "martillo.jpg";   
+        return "martillo.png";   
         
     }
     

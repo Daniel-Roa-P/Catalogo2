@@ -126,13 +126,13 @@ public class Catalogo extends JFrame implements ActionListener {
             Cliente c = new Cliente(factory1);
             
             img1.setBounds(300,80,130,130);
-            img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+c.recibirArma())));
+            img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+c.recibirArma())));
             img2.setBounds(500,80,130,130);
-            img2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+c.recibirAspecto())));
+            img2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+c.recibirAspecto())));
             img3.setBounds(300,295,130,130);
-            img3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+c.recibirEscudo())));
+            img3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+c.recibirEscudo())));
             img4.setBounds(500,295,130,130);
-            img4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+c.recibirMontura())));
+            img4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+c.recibirMontura())));
             
         } else if(e.getSource()==b2){
         
@@ -140,15 +140,15 @@ public class Catalogo extends JFrame implements ActionListener {
             Cliente c = new Cliente(factory2);
             
             img1.setBounds(300,80,130,130);
-            img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+c.recibirArma())));
+            img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+c.recibirArma())));
             img2.setBounds(500,80,130,130);
-            img2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+c.recibirAspecto())));
+            img2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+c.recibirAspecto())));
             img3.setBounds(300,295,130,130);
-            img3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+c.recibirEscudo())));
+            img3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+c.recibirEscudo())));
             img4.setBounds(500,295,130,130);
-            img4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+c.recibirMontura())));
+            img4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+c.recibirMontura())));
             img5.setBounds(800, 100, 300, 330);
-            img5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/hombre2.png")));
+            img5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/hombre2.png")));
             
         } else if(e.getSource()==b3){
         
@@ -156,27 +156,29 @@ public class Catalogo extends JFrame implements ActionListener {
             Cliente c = new Cliente(factory3);
             
             img1.setBounds(300,80,130,130);
-            img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+c.recibirArma())));
+            img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+c.recibirArma())));
             img2.setBounds(500,80,130,130);
-            img2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+c.recibirAspecto())));
+            img2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+c.recibirAspecto())));
             img3.setBounds(300,295,130,130);
-            img3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+c.recibirEscudo())));
+            img3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+c.recibirEscudo())));
             img4.setBounds(500,295,130,130);
-            img4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+c.recibirMontura())));
+            img4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+c.recibirMontura())));
+            img5.setBounds(800, 100, 300, 330);
+            img5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cosaverde2.png")));
             
         } else if(e.getSource()==b4){
             
             B.Operacion();
             
             img6.setBounds(760,260,130,130);
-            img6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+B.getArma())));
+            img6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+B.getArma())));
             
         } else if(e.getSource()==b5){
             
             B.Operacion();
             
             img8.setBounds(750,150,130,130);
-            img8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+B.getMontura())));
+            img8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+B.getMontura())));
             
                
         } else if(e.getSource()==b6){
@@ -184,7 +186,7 @@ public class Catalogo extends JFrame implements ActionListener {
             B.Operacion();
             
             img7.setBounds(1000,230,130,130);
-            img7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+B.getEscudo())));
+            img7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+B.getEscudo())));
             
         }
         
