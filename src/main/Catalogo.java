@@ -133,6 +133,8 @@ public class Catalogo extends JFrame implements ActionListener {
             img3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+c.recibirEscudo())));
             img4.setBounds(500,295,130,130);
             img4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+c.recibirMontura())));
+            img5.setBounds(800, 100, 300, 330);
+            img5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/elfo2.png")));
             
         } else if(e.getSource()==b2){
         
