@@ -37,6 +37,7 @@ public class Catalogo extends JFrame implements ActionListener {
         JLabel img5=new JLabel();
         JLabel img6=new JLabel();
         JLabel img7=new JLabel();
+        JLabel img8=new JLabel();
         
         EjercicioBuilder B=new EjercicioBuilder();
         
@@ -70,14 +71,18 @@ public class Catalogo extends JFrame implements ActionListener {
         c.add(img2);
         c.add(img3);
         c.add(img4);
-        c.add(img5);
         c.add(img6);
         c.add(img7);
+        c.add(img5);
+        c.add(img8);
+        
         
         b.addActionListener(this);
         b2.addActionListener(this);
         b3.addActionListener(this);
         b4.addActionListener(this);
+        b5.addActionListener(this);
+        b6.addActionListener(this);
         
         b.setBounds(130, 50, 100, 35);
         b.setBackground(Color.CYAN);
@@ -165,6 +170,21 @@ public class Catalogo extends JFrame implements ActionListener {
             
             img6.setBounds(760,260,130,130);
             img6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+B.getArma())));
+            
+        } else if(e.getSource()==b5){
+            
+            B.Operacion();
+            
+            img8.setBounds(750,150,130,130);
+            img8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+B.getMontura())));
+            
+               
+        } else if(e.getSource()==b6){
+            
+            B.Operacion();
+            
+            img7.setBounds(1000,230,130,130);
+            img7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AbstractFactory/"+B.getEscudo())));
             
         }
         
