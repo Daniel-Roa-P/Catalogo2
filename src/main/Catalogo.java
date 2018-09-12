@@ -136,6 +136,8 @@ public class Catalogo extends JFrame implements ActionListener {
             img5.setBounds(800, 100, 300, 330);
             img5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/elfo2.png")));
             
+            B.setId("elfo");
+            
         } else if(e.getSource()==b2){
         
             FabricaPersonajes factory2 = new FabricaHumano();
@@ -152,6 +154,8 @@ public class Catalogo extends JFrame implements ActionListener {
             img5.setBounds(800, 100, 300, 330);
             img5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/hombre2.png")));
             
+            B.setId("humano");
+            
         } else if(e.getSource()==b3){
         
             FabricaPersonajes factory3 = new FabricaOrco();
@@ -167,6 +171,8 @@ public class Catalogo extends JFrame implements ActionListener {
             img4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+c.recibirMontura())));
             img5.setBounds(800, 100, 300, 330);
             img5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cosaverde2.png")));
+            
+            B.setId("orco");
             
         } else if(e.getSource()==b4){
             
