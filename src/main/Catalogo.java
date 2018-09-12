@@ -40,6 +40,7 @@ public class Catalogo extends JFrame implements ActionListener {
         JLabel img8=new JLabel();
         
         EjercicioBuilder B=new EjercicioBuilder();
+        String id;
         
     public static void main(String[] args) {
         
@@ -136,7 +137,12 @@ public class Catalogo extends JFrame implements ActionListener {
             img5.setBounds(800, 100, 300, 330);
             img5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/elfo2.png")));
             
-            B.setId("elfo");
+            id="elfo";
+            B.setId(id);
+            
+            img6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
+            img7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
+            img8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png"))); 
             
         } else if(e.getSource()==b2){
         
@@ -154,7 +160,13 @@ public class Catalogo extends JFrame implements ActionListener {
             img5.setBounds(800, 100, 300, 330);
             img5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/hombre2.png")));
             
-            B.setId("humano");
+            id="humano";
+            B.setId(id);
+            
+            img6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
+            img7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
+            img8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
+            
             
         } else if(e.getSource()==b3){
         
@@ -172,30 +184,75 @@ public class Catalogo extends JFrame implements ActionListener {
             img5.setBounds(800, 100, 300, 330);
             img5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cosaverde2.png")));
             
-            B.setId("orco");
+            id="orco";
+            B.setId(id);
+            
+            img6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
+            img7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
+            img8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
+            
             
         } else if(e.getSource()==b4){
             
             B.Operacion();
             
-            img6.setBounds(760,260,130,130);
             img6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+B.getArma())));
+            
+            if(null != id)switch (id) {
+                case "elfo":
+                    img6.setBounds(1000, 160, 130, 130);
+                    break;
+                case "humano":
+                    img6.setBounds(760,260,130,130);
+                    break;
+                case "orco":
+                    img6.setBounds(750,177,130,130);
+                    break;
+                default:
+                    break;
+            }
+            
             
         } else if(e.getSource()==b5){
             
             B.Operacion();
             
-            img8.setBounds(750,150,130,130);
+
             img8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+B.getMontura())));
+            
+            if(null != id)switch (id) {
+                case "elfo":
+                    img8.setBounds(770, 280, 130, 130);
+                    break;
+                case "humano":
+                    img8.setBounds(750,150,130,130);
+                    break;
+                case "orco":
+                    img8.setBounds(1105,280,130,130);
+                    break;
+                default:
+                    break;
+            }
             
                
         } else if(e.getSource()==b6){
             
             B.Operacion();
-            
-            img7.setBounds(1000,230,130,130);
             img7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+B.getEscudo())));
             
+            if(null != id)switch (id) {
+                case "elfo":
+                    img7.setBounds(810, 125, 130, 130);
+                    break;
+                case "humano":
+                    img7.setBounds(980,230,130,130);
+                    break;
+                case "orco":
+                    img7.setBounds(975,220,130,130);
+                    break;
+                default:
+                    break;
+            }
         }
         
     }
