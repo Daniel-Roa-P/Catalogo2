@@ -1,11 +1,11 @@
 
 package Builder;
 
-class Impresion {
+public class Director {
    
-    private ConstructorPersonajes constructor;
+    private Constructor constructor;
 
-    public void setConstructor(ConstructorPersonajes constructor) {
+    public void setConstructor(Constructor constructor) {
         
         this.constructor = constructor; 
         

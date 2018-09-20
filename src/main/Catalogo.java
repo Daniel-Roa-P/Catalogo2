@@ -6,7 +6,11 @@ import AbstractFactory.FabricaElfo;
 import AbstractFactory.FabricaHumano;
 import AbstractFactory.FabricaOrco;
 import AbstractFactory.FabricaPersonajes;
-import Builder.EjercicioBuilder;
+import Builder.ConstructorElfo;
+import Builder.ConstructorHumano;
+import Builder.ConstructorOrco;
+import Builder.Director;
+import Builder.Personaje;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Image;
@@ -42,7 +46,8 @@ public class Catalogo extends JFrame implements ActionListener {
         JLabel img7=new JLabel();
         JLabel img8=new JLabel();
         
-        EjercicioBuilder B=new EjercicioBuilder();
+        Director D=new Director();
+        Personaje P=new Personaje();
         String id;
         
     public static void main(String[] args) {
@@ -124,6 +129,8 @@ public class Catalogo extends JFrame implements ActionListener {
         
         if(e.getSource()==b){
         
+            id="elfo";
+            
             FabricaPersonajes factory1 = new FabricaElfo();
             Cliente c = new Cliente(factory1);
          
@@ -157,15 +164,18 @@ public class Catalogo extends JFrame implements ActionListener {
             img5.setBounds(800,100,300,330);
             img5.setIcon(iconoEscalado5);
             
-            id="elfo";
-            B.setId(id);
-            
             img6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
             img7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
             img8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png"))); 
             
+            D.setConstructor(new ConstructorElfo());
+            D.construirPersonaje();
+            P=D.getPersonaje();
+            
         } else if(e.getSource()==b2){
         
+            id="humano";
+            
             FabricaPersonajes factory2 = new FabricaHumano();
             Cliente c = new Cliente(factory2);
             
@@ -199,16 +209,18 @@ public class Catalogo extends JFrame implements ActionListener {
             img5.setBounds(800,100,300,330);
             img5.setIcon(iconoEscalado5);
             
-            id="humano";
-            B.setId(id);
-            
             img6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
             img7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
             img8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
             
-            
+            D.setConstructor(new ConstructorHumano());
+            D.construirPersonaje();
+            P=D.getPersonaje();
+
         } else if(e.getSource()==b3){
         
+            id="orco";
+            
             FabricaPersonajes factory3 = new FabricaOrco();
             Cliente c = new Cliente(factory3);
             
@@ -242,19 +254,17 @@ public class Catalogo extends JFrame implements ActionListener {
             img5.setBounds(800,100,300,330);
             img5.setIcon(iconoEscalado5);
             
-            id="orco";
-            B.setId(id);
-            
             img6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
             img7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
             img8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
             
+            D.setConstructor(new ConstructorOrco());
+            D.construirPersonaje();
+            P=D.getPersonaje();
             
         } else if(e.getSource()==b4){
             
-            B.Operacion();
-            
-            ImageIcon imgIcon6 = new ImageIcon(getClass().getResource("/Imagenes/"+B.getArma()));
+            ImageIcon imgIcon6 = new ImageIcon(getClass().getResource("/Imagenes/"+P.getArma()));
             Image imgEscalada6;
             Icon iconoEscalado6;
             
@@ -279,14 +289,11 @@ public class Catalogo extends JFrame implements ActionListener {
                     break;
                 default:
                     break;
-            }
-            
+}
             
         } else if(e.getSource()==b5){
             
-            B.Operacion();
-            
-            ImageIcon imgIcon8 = new ImageIcon(getClass().getResource("/Imagenes/"+B.getMontura()));
+            ImageIcon imgIcon8 = new ImageIcon(getClass().getResource("/Imagenes/"+P.getMontura()));
             Image imgEscalada8;
             Icon iconoEscalado8;
             
@@ -311,13 +318,10 @@ public class Catalogo extends JFrame implements ActionListener {
                     break;
                 default:
                     break;
-            }
+}
             
-               
         } else if(e.getSource()==b6){
-            
-            B.Operacion();
-            ImageIcon imgIcon7 = new ImageIcon(getClass().getResource("/Imagenes/"+B.getEscudo()));
+            ImageIcon imgIcon7 = new ImageIcon(getClass().getResource("/Imagenes/"+P.getEscudo()));
             Image imgEscalada7;
             Icon iconoEscalado7;
             
@@ -344,7 +348,6 @@ public class Catalogo extends JFrame implements ActionListener {
                     break;
             }
         }
-        
-    }
     
+    }
 }

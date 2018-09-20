@@ -1,7 +1,7 @@
 
 package Builder;
 
-class Personaje {
+public class Personaje {
     
     private String Arma;
     private String Escudo;
