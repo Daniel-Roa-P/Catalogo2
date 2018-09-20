@@ -14,5 +14,5 @@ en este caso se hace uso del patron builder para montar los elementos mostrados 
 
 Diagrama Builder:
 
-![No ha sido encontrado el diagrama](https://github.com/DanielRoa20171020077/Catalogo2/blob/master/DiagramaBuilder.png)<br>
+![No ha sido encontrado el diagrama]()<br>
 
