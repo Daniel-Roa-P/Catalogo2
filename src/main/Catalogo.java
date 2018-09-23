@@ -1,4 +1,3 @@
-
 package main;
 
 import AbstractFactory.Cliente;
@@ -11,6 +10,8 @@ import Builder.ConstructorHumano;
 import Builder.ConstructorOrco;
 import Builder.Director;
 import Builder.Personaje;
+import Prototype.Diseñador;
+import Prototype.PrototipoPersonajes;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Image;
@@ -21,6 +22,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Catalogo extends JFrame implements ActionListener {
 
@@ -30,12 +33,21 @@ public class Catalogo extends JFrame implements ActionListener {
         JButton b4=new JButton("Añadir arma");
         JButton b5=new JButton("Añadir montura");
         JButton b6=new JButton("Añadir escudo");
+        JButton b7=new JButton("Imprimir tropas");
         
         JLabel Arma=new JLabel("Arma");
         JLabel Montura=new JLabel("Montura");
         JLabel Aspecto=new JLabel("Aspecto");
         JLabel Escudo=new JLabel("Escudo");
         JLabel Personaje=new JLabel("Personaje");
+        
+        JLabel Elfos=new JLabel("Elfos:");
+        JLabel Humanos=new JLabel("Humanos:");
+        JLabel Orcos=new JLabel("Orcos:");
+        
+        JTextField nElfos=new JTextField("0");
+        JTextField nHumanos=new JTextField("0");
+        JTextField nOrcos=new JTextField("0");
         
         JLabel img1=new JLabel();
         JLabel img2=new JLabel();
@@ -49,11 +61,13 @@ public class Catalogo extends JFrame implements ActionListener {
         Director D=new Director();
         Personaje P=new Personaje();
         String id;
+ 
+        JPanel jpan;
         
     public static void main(String[] args) {
         
         Catalogo P=new Catalogo();
-        P.setSize(1250, 500);
+        P.setSize(1250, 700);
         P.setVisible(true);
     }
     
@@ -62,6 +76,12 @@ public class Catalogo extends JFrame implements ActionListener {
         Container c=getContentPane();
         c.setLayout(null);
         this.getContentPane().setBackground(Color.darkGray);
+
+        jpan=new JPanel();
+        jpan.setBounds(400, 425, 800, 150);
+        jpan.setOpaque(true);
+        jpan.setBackground(Color.CYAN);
+        add(jpan);
         
         c.add(b);
         c.add(b2);
@@ -69,11 +89,18 @@ public class Catalogo extends JFrame implements ActionListener {
         c.add(b4);
         c.add(b5);
         c.add(b6);
+        c.add(b7);
         c.add(Arma);
         c.add(Montura);
         c.add(Escudo);
         c.add(Aspecto);
         c.add(Personaje);
+        c.add(Elfos);
+        c.add(Humanos);
+        c.add(Orcos);
+        c.add(nElfos);
+        c.add(nHumanos);
+        c.add(nOrcos);
         c.add(img1);
         c.add(img2);
         c.add(img3);
@@ -90,6 +117,8 @@ public class Catalogo extends JFrame implements ActionListener {
         b4.addActionListener(this);
         b5.addActionListener(this);
         b6.addActionListener(this);
+        b7.addActionListener(this);
+        
         
         b.setBounds(130, 50, 100, 35);
         b.setBackground(Color.CYAN);
@@ -103,6 +132,8 @@ public class Catalogo extends JFrame implements ActionListener {
         b5.setBackground(Color.YELLOW);
         b6.setBounds(1050, 50, 150, 35);
         b6.setBackground(Color.YELLOW);
+        b7.setBounds(130, 580, 150, 30);
+        b7.setBackground(Color.ORANGE);
         
         Arma.setBounds(300, 50, 100, 20);
         Arma.setForeground(Color.WHITE);
@@ -120,6 +151,16 @@ public class Catalogo extends JFrame implements ActionListener {
         Personaje.setForeground(Color.red);
         Personaje.setFont(new java.awt.Font("ALGERIAN", 1, 20));
         Personaje.setBackground(Color.cyan);
+        
+        Elfos.setBounds(130, 450, 100, 20);
+        Elfos.setForeground(Color.BLACK);
+        nElfos.setBounds(250, 450, 100, 20);
+        Humanos.setBounds(130, 490, 100, 20);
+        Humanos.setForeground(Color.BLACK);
+        nHumanos.setBounds(250, 490, 100, 20);
+        Orcos.setBounds(130, 530, 100, 20);
+        Orcos.setForeground(Color.BLACK);
+        nOrcos.setBounds(250, 530, 100, 20);
     }
     
     
@@ -133,7 +174,11 @@ public class Catalogo extends JFrame implements ActionListener {
             
             FabricaPersonajes factory1 = new FabricaElfo();
             Cliente c = new Cliente(factory1);
-         
+            
+            D.setConstructor(new ConstructorElfo());
+            D.construirPersonaje();
+            P=D.getPersonaje();
+            
             ImageIcon imgIcon = new ImageIcon(getClass().getResource("/Imagenes/"+c.recibirArma()));
             Image imgEscalada = imgIcon.getImage().getScaledInstance(130,130, Image.SCALE_SMOOTH);
             Icon iconoEscalado = new ImageIcon(imgEscalada);
@@ -158,7 +203,7 @@ public class Catalogo extends JFrame implements ActionListener {
             img4.setBounds(500,295,130,130);
             img4.setIcon(iconoEscalado4);
             
-            ImageIcon imgIcon5 = new ImageIcon(getClass().getResource("/Imagenes/"+c.recibirAspecto()));
+            ImageIcon imgIcon5 = new ImageIcon(getClass().getResource("/Imagenes/"+P.getAspecto()));
             Image imgEscalada5 = imgIcon5.getImage().getScaledInstance(300,330, Image.SCALE_SMOOTH);
             Icon iconoEscalado5 = new ImageIcon(imgEscalada5);
             img5.setBounds(800,100,300,330);
@@ -168,16 +213,16 @@ public class Catalogo extends JFrame implements ActionListener {
             img7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
             img8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png"))); 
             
-            D.setConstructor(new ConstructorElfo());
-            D.construirPersonaje();
-            P=D.getPersonaje();
-            
         } else if(e.getSource()==b2){
         
             id="humano";
             
             FabricaPersonajes factory2 = new FabricaHumano();
             Cliente c = new Cliente(factory2);
+            
+            D.setConstructor(new ConstructorHumano());
+            D.construirPersonaje();
+            P=D.getPersonaje();
             
             ImageIcon imgIcon = new ImageIcon(getClass().getResource("/Imagenes/"+c.recibirArma()));
             Image imgEscalada = imgIcon.getImage().getScaledInstance(130,130, Image.SCALE_SMOOTH);
@@ -203,7 +248,7 @@ public class Catalogo extends JFrame implements ActionListener {
             img4.setBounds(500,295,130,130);
             img4.setIcon(iconoEscalado4);
             
-            ImageIcon imgIcon5 = new ImageIcon(getClass().getResource("/Imagenes/"+c.recibirAspecto()));
+            ImageIcon imgIcon5 = new ImageIcon(getClass().getResource("/Imagenes/"+P.getAspecto()));
             Image imgEscalada5 = imgIcon5.getImage().getScaledInstance(300,330, Image.SCALE_SMOOTH);
             Icon iconoEscalado5 = new ImageIcon(imgEscalada5);
             img5.setBounds(800,100,300,330);
@@ -212,10 +257,6 @@ public class Catalogo extends JFrame implements ActionListener {
             img6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
             img7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
             img8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
-            
-            D.setConstructor(new ConstructorHumano());
-            D.construirPersonaje();
-            P=D.getPersonaje();
 
         } else if(e.getSource()==b3){
         
@@ -224,6 +265,10 @@ public class Catalogo extends JFrame implements ActionListener {
             FabricaPersonajes factory3 = new FabricaOrco();
             Cliente c = new Cliente(factory3);
             
+            D.setConstructor(new ConstructorOrco());
+            D.construirPersonaje();
+            P=D.getPersonaje();
+            
             ImageIcon imgIcon = new ImageIcon(getClass().getResource("/Imagenes/"+c.recibirArma()));
             Image imgEscalada = imgIcon.getImage().getScaledInstance(130,130, Image.SCALE_SMOOTH);
             Icon iconoEscalado = new ImageIcon(imgEscalada);
@@ -248,7 +293,7 @@ public class Catalogo extends JFrame implements ActionListener {
             img4.setBounds(500,295,130,130);
             img4.setIcon(iconoEscalado4);
             
-            ImageIcon imgIcon5 = new ImageIcon(getClass().getResource("/Imagenes/"+c.recibirAspecto()));
+            ImageIcon imgIcon5 = new ImageIcon(getClass().getResource("/Imagenes/"+P.getAspecto()));
             Image imgEscalada5 = imgIcon5.getImage().getScaledInstance(300,330, Image.SCALE_SMOOTH);
             Icon iconoEscalado5 = new ImageIcon(imgEscalada5);
             img5.setBounds(800,100,300,330);
@@ -257,10 +302,6 @@ public class Catalogo extends JFrame implements ActionListener {
             img6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
             img7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
             img8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacio.png")));
-            
-            D.setConstructor(new ConstructorOrco());
-            D.construirPersonaje();
-            P=D.getPersonaje();
             
         } else if(e.getSource()==b4){
             
@@ -347,6 +388,78 @@ public class Catalogo extends JFrame implements ActionListener {
                 default:
                     break;
             }
+        } else if(e.getSource()==b7){
+            
+            Diseñador dis;
+            jpan.removeAll();
+            
+            int elfos=Integer.parseInt(nElfos.getText());
+            int humanos=Integer.parseInt(nHumanos.getText());
+            int orcos=Integer.parseInt(nOrcos.getText());  
+            int n=elfos+humanos+orcos;
+            
+            JLabel tropas[]=new JLabel[n];
+            JLabel armas[]=new JLabel[n];
+            JLabel escudos[]=new JLabel[n];
+            JLabel monturas[]=new JLabel[n];
+
+            for(int i=0;i<n;i++){
+                
+                if(i<elfos){
+                    
+                    dis=new Diseñador();
+                    PrototipoPersonajes prot;
+                    prot=dis.retrievePersonaje("elfo");
+                    System.out.println(prot.getAspecto());
+                    ImageIcon imgIcon9 = new ImageIcon(getClass().getResource("/Imagenes/"+prot.getAspecto()));
+                    Image imgEscalada9 = imgIcon9.getImage().getScaledInstance(40,40, Image.SCALE_SMOOTH);
+                    Icon iconoEscalado9 = new ImageIcon(imgEscalada9);
+                
+                    tropas[i]=new JLabel();
+                    tropas[i].setIcon(iconoEscalado9);
+                    tropas[i].setBounds(0+(i*50), 500, 200, 20);
+                
+                    jpan.add(tropas[i]);
+                  
+                }else if(i>=elfos && i<(elfos+humanos)){
+                
+                    dis=new Diseñador();
+                    PrototipoPersonajes prot;
+                    prot=dis.retrievePersonaje("humano");
+                    System.out.println(prot.getAspecto());
+                    ImageIcon imgIcon9 = new ImageIcon(getClass().getResource("/Imagenes/"+prot.getAspecto()));
+                    Image imgEscalada9 = imgIcon9.getImage().getScaledInstance(40,40, Image.SCALE_SMOOTH);
+                    Icon iconoEscalado9 = new ImageIcon(imgEscalada9);
+                
+                    tropas[i]=new JLabel();
+                    tropas[i].setIcon(iconoEscalado9);
+                    tropas[i].setBounds(0+(i*50), 500, 200, 20);
+                    
+                    jpan.add(tropas[i]);
+                    
+                }else if(i>=(elfos+humanos) && i<(elfos+humanos+orcos)){
+                
+                    dis=new Diseñador();
+                    PrototipoPersonajes prot;
+                    prot=dis.retrievePersonaje("orco");
+                    System.out.println(prot.getAspecto());
+                    ImageIcon imgIcon9 = new ImageIcon(getClass().getResource("/Imagenes/"+prot.getAspecto()));
+                    Image imgEscalada9 = imgIcon9.getImage().getScaledInstance(40,40, Image.SCALE_SMOOTH);
+                    Icon iconoEscalado9 = new ImageIcon(imgEscalada9);
+                
+                    tropas[i]=new JLabel();
+                    tropas[i].setIcon(iconoEscalado9);
+                    tropas[i].setBounds(0+(i*50), 500, 200, 20);
+                    
+                    jpan.add(tropas[i]);
+                    
+                }
+                jpan.validate();
+                jpan.repaint();
+                
+            }
+                
+            
         }
     
     }

@@ -6,6 +6,7 @@
 package Builder;
 
 import AbstractFactory.Arco;
+import AbstractFactory.Elfo;
 import AbstractFactory.EscudoElfo;
 import AbstractFactory.Reno;
 
@@ -18,6 +19,7 @@ public class ConstructorElfo extends Constructor {
     Arco a=new Arco();
     Reno r=new Reno();
     EscudoElfo e=new EscudoElfo();
+    Elfo E=new Elfo();
     
     @Override
     public void construirPersonaje() {
@@ -45,6 +47,11 @@ public class ConstructorElfo extends Constructor {
         
         personaje.setMontura(r.mostrarMontura());
         
+    }
+
+    @Override
+    public void construirApariencia() {
+        personaje.setAspecto(E.mostrarApariencia());
     }
 
 }

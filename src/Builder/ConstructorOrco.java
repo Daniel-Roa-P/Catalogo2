@@ -4,13 +4,15 @@ package Builder;
 import AbstractFactory.EscudoOrco;
 import AbstractFactory.Javali;
 import AbstractFactory.Martillo;
+import AbstractFactory.Orco;
 
 public class ConstructorOrco extends Constructor {
 
     Martillo m=new Martillo();
     Javali j=new Javali();
     EscudoOrco e=new EscudoOrco();
-
+    Orco o=new Orco();
+    
     @Override
     public void construirPersonaje() {
         
@@ -37,6 +39,11 @@ public class ConstructorOrco extends Constructor {
         
         personaje.setMontura(j.mostrarMontura());
         
+    }
+
+    @Override
+    public void construirApariencia() {
+        personaje.setAspecto(o.mostrarApariencia());
     }
 
     

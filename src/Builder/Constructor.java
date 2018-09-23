@@ -10,6 +10,7 @@ public abstract class Constructor {
     }
     
     public abstract void construirPersonaje();
+    public abstract void construirApariencia();
     public abstract void construirArma();
     public abstract void construirEscudo();
     public abstract void construirMontura();

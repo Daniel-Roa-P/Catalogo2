@@ -3,36 +3,44 @@ package Builder;
 
 public class Personaje {
     
-    private String Arma;
-    private String Escudo;
-    private String Montura;
+    private String arma="vacio.png";
+    private String escudo="vacio.png";
+    private String montura="vacio.png";
+    private String aspecto="vacio.png";
     
     public void setArma(String Arma){
-       this.Arma=Arma; 
+       this.arma=Arma; 
     }
     
 
     public String getArma() {
-        return Arma;
+        return arma;
     }
     
     public void setEscudo(String Escudo){
-       this.Escudo=Escudo; 
+       this.escudo=Escudo; 
     }
     
 
     public String getEscudo() {
-        return Escudo;
+        return escudo;
     }
     
     public void setMontura(String Montura){
-       this.Montura=Montura; 
+       this.montura=Montura; 
     }
     
 
     public String getMontura() {
-        return Montura;
+        return montura;
     }
 
+    public void setAspecto(String Aspecto){
+       this.aspecto=Aspecto; 
+    }
     
+
+    public String getAspecto() {
+        return aspecto;
+    }
 }

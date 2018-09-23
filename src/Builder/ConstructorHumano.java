@@ -8,6 +8,7 @@ package Builder;
 import AbstractFactory.Caballo;
 import AbstractFactory.EscudoHumano;
 import AbstractFactory.Espada;
+import AbstractFactory.Humano;
 
 /**
  *
@@ -18,6 +19,7 @@ public class ConstructorHumano extends Constructor{
     Espada espada=new Espada();
     Caballo caballo=new Caballo();
     EscudoHumano escudo=new EscudoHumano();
+    Humano humano=new Humano();
     
     @Override
     public void construirPersonaje() {
@@ -45,6 +47,11 @@ public class ConstructorHumano extends Constructor{
         
         personaje.setMontura(caballo.mostrarMontura());
         
+    }
+
+    @Override
+    public void construirApariencia() {
+        personaje.setAspecto(humano.mostrarApariencia());
     }
     
 }

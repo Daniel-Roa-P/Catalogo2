@@ -21,6 +21,7 @@ public class Director {
         constructor.construirArma();
         constructor.construirMontura();
         constructor.construirEscudo();
+        constructor.construirApariencia();
     }
     
 }
