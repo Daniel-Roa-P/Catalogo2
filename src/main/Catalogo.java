@@ -67,7 +67,7 @@ public class Catalogo extends JFrame implements ActionListener {
     public static void main(String[] args) {
         
         Catalogo P=new Catalogo();
-        P.setSize(1350, 700);
+        P.setSize(1350, 730);
         P.setVisible(true);
     }
     
@@ -78,7 +78,7 @@ public class Catalogo extends JFrame implements ActionListener {
         this.getContentPane().setBackground(Color.darkGray);
 
         jpan=new JPanel();
-        jpan.setBounds(400, 425, 900, 180);
+        jpan.setBounds(400, 425, 900, 245);
         jpan.setOpaque(true);
         jpan.setBackground(Color.DARK_GRAY);
         add(jpan);
@@ -370,7 +370,7 @@ public class Catalogo extends JFrame implements ActionListener {
                     imgEscalada7 = imgIcon7.getImage().getScaledInstance(100,100, Image.SCALE_SMOOTH);
                     iconoEscalado7 = new ImageIcon(imgEscalada7);
                     img7.setIcon(iconoEscalado7);
-                    img7.setBounds(830, 125, 130, 130);
+                    img7.setBounds(1010, 190, 130, 130);
                     break;
                 case "humano":
                     imgEscalada7 = imgIcon7.getImage().getScaledInstance(130,130, Image.SCALE_SMOOTH);
