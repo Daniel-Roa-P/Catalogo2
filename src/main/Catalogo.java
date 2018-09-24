@@ -45,9 +45,9 @@ public class Catalogo extends JFrame implements ActionListener {
         JLabel Humanos=new JLabel("Humanos:");
         JLabel Orcos=new JLabel("Orcos:");
         
-        JTextField nElfos=new JTextField("0");
-        JTextField nHumanos=new JTextField("0");
-        JTextField nOrcos=new JTextField("0");
+        JTextField nElfos=new JTextField("10");
+        JTextField nHumanos=new JTextField("10");
+        JTextField nOrcos=new JTextField("10");
         
         JLabel img1=new JLabel();
         JLabel img2=new JLabel();
@@ -67,7 +67,7 @@ public class Catalogo extends JFrame implements ActionListener {
     public static void main(String[] args) {
         
         Catalogo P=new Catalogo();
-        P.setSize(1250, 700);
+        P.setSize(1350, 700);
         P.setVisible(true);
     }
     
@@ -78,9 +78,9 @@ public class Catalogo extends JFrame implements ActionListener {
         this.getContentPane().setBackground(Color.darkGray);
 
         jpan=new JPanel();
-        jpan.setBounds(400, 425, 800, 150);
+        jpan.setBounds(400, 425, 900, 180);
         jpan.setOpaque(true);
-        jpan.setBackground(Color.CYAN);
+        jpan.setBackground(Color.DARK_GRAY);
         add(jpan);
         
         c.add(b);
@@ -105,11 +105,10 @@ public class Catalogo extends JFrame implements ActionListener {
         c.add(img2);
         c.add(img3);
         c.add(img4);
-        c.add(img6);
         c.add(img7);
         c.add(img5);
         c.add(img8);
-        
+        c.add(img6);
         
         b.addActionListener(this);
         b2.addActionListener(this);
@@ -314,19 +313,19 @@ public class Catalogo extends JFrame implements ActionListener {
                     imgEscalada6 = imgIcon6.getImage().getScaledInstance(130,130, Image.SCALE_SMOOTH);
                     iconoEscalado6 = new ImageIcon(imgEscalada6);
                     img6.setIcon(iconoEscalado6);
-                    img6.setBounds(1000, 160, 130, 130);
+                    img6.setBounds(850, 110, 130, 130);
                     break;
                 case "humano":
                     imgEscalada6 = imgIcon6.getImage().getScaledInstance(130,130, Image.SCALE_SMOOTH);
                     iconoEscalado6 = new ImageIcon(imgEscalada6);
                     img6.setIcon(iconoEscalado6);
-                    img6.setBounds(760,260,130,130);
+                    img6.setBounds(850,130,130,130);
                     break;
                 case "orco":
                     imgEscalada6 = imgIcon6.getImage().getScaledInstance(170,170, Image.SCALE_SMOOTH);
                     iconoEscalado6 = new ImageIcon(imgEscalada6);
                     img6.setIcon(iconoEscalado6);
-                    img6.setBounds(720,135,170,170);
+                    img6.setBounds(770,100,170,170);
                     break;
                 default:
                     break;
@@ -343,7 +342,7 @@ public class Catalogo extends JFrame implements ActionListener {
                     imgEscalada8 = imgIcon8.getImage().getScaledInstance(250,220, Image.SCALE_SMOOTH);
                     iconoEscalado8 = new ImageIcon(imgEscalada8);
                     img8.setIcon(iconoEscalado8);
-                    img8.setBounds(770, 210, 250, 220);
+                    img8.setBounds(1000, 210, 250, 220);
                     break;
                 case "humano":
                     imgEscalada8 = imgIcon8.getImage().getScaledInstance(250,220, Image.SCALE_SMOOTH);
@@ -391,72 +390,78 @@ public class Catalogo extends JFrame implements ActionListener {
         } else if(e.getSource()==b7){
             
             Diseñador dis;
+            jpan.setLayout(null);
             jpan.removeAll();
-            
             int elfos=Integer.parseInt(nElfos.getText());
             int humanos=Integer.parseInt(nHumanos.getText());
             int orcos=Integer.parseInt(nOrcos.getText());  
-            int n=elfos+humanos+orcos;
-            
+            int n=(elfos+humanos+orcos);
+            int j = 0;
+            int k = 0;
             JLabel tropas[]=new JLabel[n];
             JLabel armas[]=new JLabel[n];
             JLabel escudos[]=new JLabel[n];
             JLabel monturas[]=new JLabel[n];
-
+            String personaje = null;
+            
             for(int i=0;i<n;i++){
-                
+                    
                 if(i<elfos){
-                    
-                    dis=new Diseñador();
-                    PrototipoPersonajes prot;
-                    prot=dis.retrievePersonaje("elfo");
-                    System.out.println(prot.getAspecto());
-                    ImageIcon imgIcon9 = new ImageIcon(getClass().getResource("/Imagenes/"+prot.getAspecto()));
-                    Image imgEscalada9 = imgIcon9.getImage().getScaledInstance(40,40, Image.SCALE_SMOOTH);
-                    Icon iconoEscalado9 = new ImageIcon(imgEscalada9);
-                
-                    tropas[i]=new JLabel();
-                    tropas[i].setIcon(iconoEscalado9);
-                    tropas[i].setBounds(0+(i*50), 500, 200, 20);
-                
-                    jpan.add(tropas[i]);
-                  
-                }else if(i>=elfos && i<(elfos+humanos)){
-                
-                    dis=new Diseñador();
-                    PrototipoPersonajes prot;
-                    prot=dis.retrievePersonaje("humano");
-                    System.out.println(prot.getAspecto());
-                    ImageIcon imgIcon9 = new ImageIcon(getClass().getResource("/Imagenes/"+prot.getAspecto()));
-                    Image imgEscalada9 = imgIcon9.getImage().getScaledInstance(40,40, Image.SCALE_SMOOTH);
-                    Icon iconoEscalado9 = new ImageIcon(imgEscalada9);
-                
-                    tropas[i]=new JLabel();
-                    tropas[i].setIcon(iconoEscalado9);
-                    tropas[i].setBounds(0+(i*50), 500, 200, 20);
-                    
-                    jpan.add(tropas[i]);
-                    
-                }else if(i>=(elfos+humanos) && i<(elfos+humanos+orcos)){
-                
-                    dis=new Diseñador();
-                    PrototipoPersonajes prot;
-                    prot=dis.retrievePersonaje("orco");
-                    System.out.println(prot.getAspecto());
-                    ImageIcon imgIcon9 = new ImageIcon(getClass().getResource("/Imagenes/"+prot.getAspecto()));
-                    Image imgEscalada9 = imgIcon9.getImage().getScaledInstance(40,40, Image.SCALE_SMOOTH);
-                    Icon iconoEscalado9 = new ImageIcon(imgEscalada9);
-                
-                    tropas[i]=new JLabel();
-                    tropas[i].setIcon(iconoEscalado9);
-                    tropas[i].setBounds(0+(i*50), 500, 200, 20);
-                    
-                    jpan.add(tropas[i]);
-                    
+                    personaje="elfo";
+                } else if(i>=elfos && i<(elfos+humanos)) {
+                    personaje="humano";
+                } else if(i>=(elfos+humanos) && i<(n)){
+                    personaje="orco";
                 }
+                
+                if(i!=0 && i%13==0){
+                        j=j+1;
+                        k=0;
+                    }
+                
+                    dis=new Diseñador();
+                    PrototipoPersonajes prot;
+                    prot=dis.retrievePersonaje(personaje);
+                    
+                    ImageIcon imgIcon9 = new ImageIcon(getClass().getResource("/Imagenes/"+prot.getAspecto()));
+                    Image imgEscalada9 = imgIcon9.getImage().getScaledInstance(60,60, Image.SCALE_SMOOTH);
+                    Icon iconoEscalado9 = new ImageIcon(imgEscalada9);
+                
+                    ImageIcon imgIcon10 = new ImageIcon(getClass().getResource("/Imagenes/"+prot.getArma()));
+                    Image imgEscalada10 = imgIcon10.getImage().getScaledInstance(30,30, Image.SCALE_SMOOTH);
+                    Icon iconoEscalado10 = new ImageIcon(imgEscalada10);
+                    
+                    ImageIcon imgIcon11 = new ImageIcon(getClass().getResource("/Imagenes/"+prot.getEscudo()));
+                    Image imgEscalada11 = imgIcon11.getImage().getScaledInstance(25,25, Image.SCALE_SMOOTH);
+                    Icon iconoEscalado11 = new ImageIcon(imgEscalada11);
+                    
+                    ImageIcon imgIcon12 = new ImageIcon(getClass().getResource("/Imagenes/"+prot.getMontura()));
+                    Image imgEscalada12 = imgIcon12.getImage().getScaledInstance(35,35, Image.SCALE_SMOOTH);
+                    Icon iconoEscalado12 = new ImageIcon(imgEscalada12);
+                    
+                    tropas[i]=new JLabel();
+                    tropas[i].setIcon(iconoEscalado9);
+                    armas[i]=new JLabel();
+                    armas[i].setIcon(iconoEscalado10);
+                    escudos[i]=new JLabel();
+                    escudos[i].setIcon(iconoEscalado11);
+                    monturas[i]=new JLabel();
+                    monturas[i].setIcon(iconoEscalado12);
+                    
+                    jpan.add(escudos[i]);
+                    escudos[i].setBounds(37+(k*70), 22+(j*60), 25, 25);
+                    jpan.add(tropas[i]);
+                    tropas[i].setBounds(0+(k*70), 0+(j*60), 60, 60);
+                    jpan.add(monturas[i]);
+                    monturas[i].setBounds(40+(k*70), 20+(j*60), 35, 35);
+                    jpan.add(armas[i]);
+                    armas[i].setBounds(0+(k*70), 5+(j*60), 25, 25);
+                    
+                    k++;
+                    
                 jpan.validate();
                 jpan.repaint();
-                
+                 
             }
                 
             

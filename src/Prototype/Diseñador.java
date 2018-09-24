@@ -25,7 +25,7 @@ public class Diseñador {
         
         orco.setAspecto("cosaverde2.png");
         orco.setArma("martillo.png");
-        orco.setEscudo("escudoOrco.png");
+        orco.setEscudo("escudoOrco2.png");
         orco.setMontura("original.png");
     }
  
