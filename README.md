@@ -10,9 +10,16 @@ Diagrama Abstract Factory:
 
 Builder: Montar personaje
 
-en este caso se hace uso del patron builder para montar los elementos mostrados anteriormente con el abstract factory de modo que el usuario puede elegir que equipamiento tendra cada personaje
+en este caso se hace uso del patron builder para montar los productos creados anteriormente con el abstract factory de modo que el usuario puede elegir que equipamiento tendra cada personaje
 
 Diagrama Builder:
 
 ![No ha sido encontrado el diagrama](https://github.com/DanielRoa20171020077/Catalogo2/blob/master/DiagramaBuilder2.png)<br>
 
+Prototype: Imprimir Tropas
+
+una vez el usuario personaliza sus guerreros, este elige la cantidad de elfos, humanos y orcos que desea en su ejercito de modo que ingresa el numero y se muestran las tropas que este digito, esto se logra gracias al patron prototype al generar un prototipo concreto gracias a los metodos de clonacion y la relacion jerarquica que se observan en el siguiente diagrama
+
+Diagrama Prototype: 
+
+![No ha sido encontrado el diagrama](https://github.com/DanielRoa20171020077/Catalogo2/blob/master/prototype.png)<br>
