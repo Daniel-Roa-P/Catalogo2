@@ -3,10 +3,10 @@ package Builder;
 
 public class Personaje {
     
-    private String arma="vacio.png";
-    private String escudo="vacio.png";
-    private String montura="vacio.png";
-    private String aspecto="vacio.png";
+    private String arma;
+    private String escudo;
+    private String montura;
+    private String aspecto;
     
     public void setArma(String Arma){
        this.arma=Arma; 

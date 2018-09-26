@@ -396,13 +396,25 @@ public class Catalogo extends JFrame implements ActionListener {
             int humanos=Integer.parseInt(nHumanos.getText());
             int orcos=Integer.parseInt(nOrcos.getText());  
             int n=(elfos+humanos+orcos);
+            int borde=13;
             int j = 0;
             int k = 0;
+            int d = 0;
             JLabel tropas[]=new JLabel[n];
             JLabel armas[]=new JLabel[n];
             JLabel escudos[]=new JLabel[n];
             JLabel monturas[]=new JLabel[n];
             String personaje = null;
+            
+            for(int l=0;l<n;l++){
+                
+                if(n<52*(Math.pow(4, l))){
+                    d=(int) Math.pow(2, l);
+                    borde=borde*d;
+                    l=n;
+                }    
+                
+            }
             
             for(int i=0;i<n;i++){
                     
@@ -414,7 +426,7 @@ public class Catalogo extends JFrame implements ActionListener {
                     personaje="orco";
                 }
                 
-                if(i!=0 && i%13==0){
+                if(i!=0 && i%borde==0){
                         j=j+1;
                         k=0;
                     }
@@ -424,19 +436,19 @@ public class Catalogo extends JFrame implements ActionListener {
                     prot=dis.retrievePersonaje(personaje);
                     
                     ImageIcon imgIcon9 = new ImageIcon(getClass().getResource("/Imagenes/"+prot.getAspecto()));
-                    Image imgEscalada9 = imgIcon9.getImage().getScaledInstance(60,60, Image.SCALE_SMOOTH);
+                    Image imgEscalada9 = imgIcon9.getImage().getScaledInstance((int)60/d,(int)60/d, Image.SCALE_SMOOTH);
                     Icon iconoEscalado9 = new ImageIcon(imgEscalada9);
                 
                     ImageIcon imgIcon10 = new ImageIcon(getClass().getResource("/Imagenes/"+prot.getArma()));
-                    Image imgEscalada10 = imgIcon10.getImage().getScaledInstance(30,30, Image.SCALE_SMOOTH);
+                    Image imgEscalada10 = imgIcon10.getImage().getScaledInstance((int)30/d,(int)30/d, Image.SCALE_SMOOTH);
                     Icon iconoEscalado10 = new ImageIcon(imgEscalada10);
                     
                     ImageIcon imgIcon11 = new ImageIcon(getClass().getResource("/Imagenes/"+prot.getEscudo()));
-                    Image imgEscalada11 = imgIcon11.getImage().getScaledInstance(25,25, Image.SCALE_SMOOTH);
+                    Image imgEscalada11 = imgIcon11.getImage().getScaledInstance((int)25/d,(int)25/d, Image.SCALE_SMOOTH);
                     Icon iconoEscalado11 = new ImageIcon(imgEscalada11);
                     
                     ImageIcon imgIcon12 = new ImageIcon(getClass().getResource("/Imagenes/"+prot.getMontura()));
-                    Image imgEscalada12 = imgIcon12.getImage().getScaledInstance(35,35, Image.SCALE_SMOOTH);
+                    Image imgEscalada12 = imgIcon12.getImage().getScaledInstance((int)35/d,(int)35/d, Image.SCALE_SMOOTH);
                     Icon iconoEscalado12 = new ImageIcon(imgEscalada12);
                     
                     tropas[i]=new JLabel();
@@ -449,13 +461,13 @@ public class Catalogo extends JFrame implements ActionListener {
                     monturas[i].setIcon(iconoEscalado12);
                     
                     jpan.add(escudos[i]);
-                    escudos[i].setBounds(37+(k*70), 22+(j*60), 25, 25);
+                    escudos[i].setBounds((int)37/d+(k*70/d),(int)22/d+(int)(j*60/d), (int)25/d,(int)25/d);
                     jpan.add(tropas[i]);
-                    tropas[i].setBounds(0+(k*70), 0+(j*60), 60, 60);
+                    tropas[i].setBounds(0+(k*70/d), 0+(int)(j*60/d), (int)60/d,(int)60/d);
                     jpan.add(monturas[i]);
-                    monturas[i].setBounds(40+(k*70), 20+(j*60), 35, 35);
+                    monturas[i].setBounds((int)40/d+(k*70/d),(int)20/d+(int)(j*60/d), (int)35/d,(int)35/d);
                     jpan.add(armas[i]);
-                    armas[i].setBounds(0+(k*70), 5+(j*60), 25, 25);
+                    armas[i].setBounds(0+(k*70/d),(int)5/d+(int)(j*60/d), (int)30/d,(int)30/d);
                     
                     k++;
                     
